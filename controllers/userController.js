@@ -1,4 +1,4 @@
-const { User, Email } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
   async getUsers(req, res) {
@@ -40,8 +40,8 @@ module.exports = {
         res.status(404).json({ message: 'No User with that ID' });
       }
 
-      await Email.deleteMany({ _id: { $in: User.Email } });
-      res.json({ message: 'User and email deleted!' });
+      await Thought.deleteMany({ _id: { $in: User.Thought } });
+      res.json({ message: 'User and Thought deleted!' });
     } catch (err) {
       res.status(500).json(err);
     }
